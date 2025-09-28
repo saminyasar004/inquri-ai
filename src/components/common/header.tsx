@@ -22,7 +22,9 @@ export default function Header() {
 				</div>
 
 				<div className="flex items-center justify-center">
-					<Button className="font-bold">Login</Button>
+					<Button className="font-bold">
+						<Link to={"/login"}>Login</Link>
+					</Button>
 				</div>
 			</div>
 		</header>

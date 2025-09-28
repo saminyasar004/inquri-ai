@@ -57,7 +57,7 @@ export default function Login() {
 				<div className="text-center">
 					<span className="text-gray-600">Need an account? </span>
 					<Link
-						to="/create-account"
+						to="/signup"
 						className="text-[#00FF00] hover:underline font-medium"
 					>
 						Sign up
@@ -66,7 +66,7 @@ export default function Login() {
 
 				<Button
 					variant="outline"
-					className="w-full h-12 border-gray-300 bg-transparent"
+					className="w-full h-12 border-gray-300 bg-transparent text-black"
 				>
 					<svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
 						<path
