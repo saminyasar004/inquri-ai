@@ -1,13 +1,60 @@
 @tailwind base;
 @tailwind components;
+
+/* =================== Font Import Start ======================== */
+
+@font-face {
+	font-family: "Arial Rounded MT Bold";
+	src: url("./assets/fonts/arial-rounded/arial-rounded-mt-bold.ttf")
+		format("truetype");
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Open Sans";
+	src: url("./assets/fonts/open-sans/OpenSans-Light.ttf") format("truetype");
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Open Sans";
+	src: url("./assets/fonts/open-sans/OpenSans-Medium.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Open Sans";
+	src: url("./assets/fonts/open-sans/OpenSans-SemiBold.ttf")
+		format("truetype");
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Open Sans";
+	src: url("./assets/fonts/open-sans/OpenSans-Bold.ttf") format("truetype");
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Open Sans";
+	src: url("./assets/fonts/open-sans/OpenSans-Regular.ttf") format("truetype");
+	font-weight: 500;
+	font-style: normal;
+}
+
 @tailwind utilities;
 
 @layer base {
-	* {
-		@apply border-gray-200;
+	body {
+		@apply bg-black text-dark-foreground-500 cursor-default font-openSans overflow-x-hidden;
 	}
 
-	body {
-		@apply bg-white text-gray-900 cursor-default;
-	}
+	/* .row {
+		@apply w-row-sm lg:w-row max-w-[120rem] m-auto;
+	} */
 }

@@ -14,12 +14,19 @@ export default {
 			center: true,
 			padding: "2rem",
 			screens: {
-				"2xl": "1400px",
+				"2xl": "1800px",
 			},
+		},
+		fontFamily: {
+			openSans: ["Open Sans", "sans-serif"],
+			arialRounded: ["Arial Rounded MT Bold", "sans-serif"],
 		},
 		extend: {
 			colors: {
-				primary: "#1dd881",
+				"primary-500": "#06D206",
+				"primary-600": "#3AD23A",
+				"dark-foreground-500": "#E2E7EE",
+				"primary-dark": "#1A1A1A",
 				secondary: "#033333",
 				warning: "#ff523b",
 			},
