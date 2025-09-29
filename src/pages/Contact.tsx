@@ -1,6 +1,7 @@
 import ContactBanner from "@/assets/images/contact.jpg";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { GradientButton } from "@/components/ui/gradient-button";
 import { Input } from "@/components/ui/input";
 import {
 	Select,
@@ -14,13 +15,13 @@ import { Mail } from "lucide-react";
 
 export default function Contact() {
 	return (
-		<div className="min-h-screen bg-black flex flex-col">
+		<div className="h-auto py-12 flex flex-col">
 			<main className="flex-1">
 				{/* Contact Us Section */}
 				<section className="py-16 px-6">
-					<div className="max-w-7xl mx-auto">
+					<div className="container">
 						{/* Header */}
-						<div className="text-center mb-16">
+						<div className="text-center mb-24">
 							<h1 className="text-4xl md:text-5xl font-bold text-[#00FF00] mb-4">
 								Contact Us
 							</h1>
@@ -60,26 +61,35 @@ export default function Contact() {
 								<form className="space-y-6">
 									{/* Name Fields */}
 									<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-										<div>
-											<label className="block text-white text-sm font-medium mb-2">
+										<div className="space-y-3">
+											<label
+												htmlFor="firstName"
+												className="block text-white text-base cursor-pointer font-medium mb-2"
+											>
 												First name{" "}
 												<span className="text-red-500">
 													*
 												</span>
 											</label>
+
 											<Input
+												id="firstName"
 												placeholder="First name"
 												className="bg-gray-900 border-gray-700 text-white placeholder-gray-500 focus:border-[#00FF00] focus:ring-[#00FF00]"
 											/>
 										</div>
-										<div>
-											<label className="block text-white text-sm font-medium mb-2">
+										<div className="space-y-3">
+											<label
+												htmlFor="lastName"
+												className="block text-white text-base cursor-pointer font-medium mb-2"
+											>
 												Last name{" "}
 												<span className="text-red-500">
 													*
 												</span>
 											</label>
 											<Input
+												id="lastName"
 												placeholder="Last name"
 												className="bg-gray-900 border-gray-700 text-white placeholder-gray-500 focus:border-[#00FF00] focus:ring-[#00FF00]"
 											/>
@@ -87,8 +97,11 @@ export default function Contact() {
 									</div>
 
 									{/* Email */}
-									<div>
-										<label className="block text-white text-sm font-medium mb-2">
+									<div className="space-y-3">
+										<label
+											htmlFor="email"
+											className="block text-white text-base cursor-pointer font-medium mb-2"
+										>
 											Email{" "}
 											<span className="text-red-500">
 												*
@@ -97,6 +110,7 @@ export default function Contact() {
 										<div className="relative">
 											<Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4" />
 											<Input
+												id="email"
 												type="email"
 												placeholder="you@company.com"
 												className="bg-gray-900 border-gray-700 text-white placeholder-gray-500 focus:border-[#00FF00] focus:ring-[#00FF00] pl-10"
@@ -105,28 +119,41 @@ export default function Contact() {
 									</div>
 
 									{/* Phone Number */}
-									<div>
-										<label className="block text-white text-sm font-medium mb-2">
+									<div className="space-y-3">
+										<label
+											htmlFor="phoneNumber"
+											className="block text-white text-base cursor-pointer font-medium mb-2"
+										>
 											Phone number
 										</label>
 										<div className="flex gap-2">
 											<Select>
-												<SelectTrigger className="w-20 bg-gray-900 border-gray-700 text-white focus:border-[#00FF00] focus:ring-[#00FF00]">
+												<SelectTrigger className="w-24 h-16 bg-gray-900 border-gray-700 text-dark-foreground-500">
 													<SelectValue placeholder="BD" />
 												</SelectTrigger>
 												<SelectContent className="bg-gray-900 border-gray-700">
-													<SelectItem value="bd">
+													<SelectItem
+														value="bd"
+														className="text-dark-foreground-500"
+													>
 														BD
 													</SelectItem>
-													<SelectItem value="us">
+													<SelectItem
+														value="us"
+														className="text-dark-foreground-500"
+													>
 														US
 													</SelectItem>
-													<SelectItem value="uk">
+													<SelectItem
+														value="uk"
+														className="text-dark-foreground-500"
+													>
 														UK
 													</SelectItem>
 												</SelectContent>
 											</Select>
 											<Input
+												id="phoneNumber"
 												placeholder="+61"
 												className="flex-1 bg-gray-900 border-gray-700 text-white placeholder-gray-500 focus:border-[#00FF00] focus:ring-[#00FF00]"
 											/>
@@ -134,14 +161,18 @@ export default function Contact() {
 									</div>
 
 									{/* Message */}
-									<div>
-										<label className="block text-white text-sm font-medium mb-2">
+									<div className="space-y-3">
+										<label
+											htmlFor="message"
+											className="block text-white text-base cursor-pointer font-medium mb-2"
+										>
 											Message{" "}
 											<span className="text-red-500">
 												*
 											</span>
 										</label>
 										<Textarea
+											id="message"
 											placeholder="Leave us a message..."
 											rows={4}
 											className="bg-gray-900 border-gray-700 text-white placeholder-gray-500 focus:border-[#00FF00] focus:ring-[#00FF00] resize-none"
@@ -149,14 +180,14 @@ export default function Contact() {
 									</div>
 
 									{/* Privacy Policy Checkbox */}
-									<div className="flex items-start space-x-2">
+									<div className="flex items-center space-x-2">
 										<Checkbox
 											id="privacy"
 											className="border-gray-700 data-[state=checked]:bg-[#00FF00] data-[state=checked]:border-[#00FF00]"
 										/>
 										<label
 											htmlFor="privacy"
-											className="text-sm text-gray-400 leading-relaxed"
+											className="text-sm cursor-pointer text-gray-400 leading-relaxed"
 										>
 											You agree to our friendly{" "}
 											<a
@@ -190,9 +221,9 @@ export default function Contact() {
 				</section>
 
 				{/* Analytics Section */}
-				<section className="py-16 px-6">
-					<div className="max-w-4xl mx-auto">
-						<div className="bg-gray-900 rounded-2xl p-12 text-center border border-gray-800">
+				<section className="py-36 px-6 bg-[#0A0A0A]">
+					<div className="container">
+						<div className="bg-black rounded-2xl p-12 text-center drop-shadow-contact-box">
 							<h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
 								Our powerful analytics
 								<br />
@@ -206,9 +237,11 @@ export default function Contact() {
 								tokens to reward your customers and incentivize
 								engagement.
 							</p>
-							<Button className="bg-transparent border-2 border-[#00FF00] text-[#00FF00] hover:bg-[#00FF00] hover:text-black px-8 py-3 rounded-lg font-semibold transition-colors">
+							<GradientButton
+								onClick={() => console.log("Clicked!")}
+							>
 								Subscribe Today
-							</Button>
+							</GradientButton>
 						</div>
 					</div>
 				</section>
