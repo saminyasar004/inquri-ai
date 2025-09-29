@@ -1,11 +1,11 @@
 import React from "react";
 import { Phone, FileText } from "lucide-react";
-import HeroBanner from "@/assets/images/hero-banner.svg";
+import AdminDashboardBanner from "@/assets/images/admin-dashboard-banner.svg";
 
 const MissedCallSection: React.FC = () => {
 	return (
 		<section className="min-h-screen bg-background flex items-center justify-center px-6 py-20">
-			<div className="max-w-7xl mx-auto">
+			<div className="container">
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 					{/* Left Content */}
 					<div className="space-y-8">
@@ -75,8 +75,11 @@ const MissedCallSection: React.FC = () => {
 
 					{/* Right Visual */}
 					<div className="flex items-center justify-center">
-						<div className="w-full border border-border rounded-lg flex items-center justify-center">
-							<img src={HeroBanner} className="w-full" />
+						<div className="w-full flex items-center justify-center">
+							<img
+								src={AdminDashboardBanner}
+								className="w-full border border-border rounded-xl"
+							/>
 						</div>
 					</div>
 				</div>

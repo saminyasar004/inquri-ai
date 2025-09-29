@@ -16,15 +16,16 @@ const buttonVariants = cva(
 				outline:
 					"border border-slate-200 bg-white hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50",
 				secondary:
-					"bg-slate-100 text-slate-900 hover:bg-slate-100/80 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
+					"bg-gradient-to-b from-[#615E84] to-[#2A2944] text-[#D8E1EB]",
 				ghost: "hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50",
 				link: "text-slate-900 underline-offset-4 hover:underline dark:text-slate-50",
 				"primary-capsul":
 					"bg-[linear-gradient(to_bottom,#01D708_0%,#161616_100%)] rounded-full shadow-[0px_0px_21.14px_rgba(34,159,34,0.62)] border border-[#40DF40]",
 				"secondary-capsul":
 					"bg-[linear-gradient(to_bottom,#8397B6_0%,#1B1D20_89%)] rounded-full shadow-[0px_0px_21.14px_rgba(34,159,34,0.62)] text-[#82FF87]",
-				another:
+				primary:
 					"bg-[linear-gradient(to_bottom,#40DF40_0%,#0B6F0B_100%)] text-black font-semibold",
+				"primary-flat": "bg-[#00FF00] font-semibold text-[#071107]",
 			},
 			size: {
 				default: "h-10 px-6 py-2",

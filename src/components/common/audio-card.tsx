@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Play, Pause } from "lucide-react";
 import Waveform from "./wave-form";
+import AudioWave from "@/assets/images/audio-wave.svg";
 
 interface AudioCardProps {
 	companyName: string;
@@ -20,17 +21,17 @@ const AudioCard: React.FC<AudioCardProps> = ({
 	};
 
 	return (
-		<div className="bg-card border border-border rounded-2xl p-6 w-80 flex-shrink-0">
+		<div className="bg-card border border-border rounded-2xl p-6 w-96 flex-shrink-0">
 			<div className="flex items-center space-x-4">
-				{/* Logo */}
+				{/* Logo */}`{" "}
 				<div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+					`{" "}
 					<img
 						src={logoSrc}
 						alt={`${companyName} logo`}
 						className="w-full h-full object-cover"
 					/>
 				</div>
-
 				{/* Company Info */}
 				<div className="flex-1 min-w-0">
 					<h3 className="text-card-foreground font-medium truncate">
@@ -52,6 +53,7 @@ const AudioCard: React.FC<AudioCardProps> = ({
 						<Play className="w-4 h-4 text-primary ml-0.5" />
 					)}
 				</button>
+				<img src={AudioWave} className="max-w-full pl-4" />
 
 				{/* Waveform */}
 				<div className="flex-1">

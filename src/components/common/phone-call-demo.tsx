@@ -50,12 +50,12 @@ const PhoneCallDemo: React.FC = () => {
 	};
 
 	return (
-		<section className="min-h-screen bg-background flex items-center justify-center px-6 py-20">
-			<div className="max-w-7xl mx-auto">
+		<section className="h-auto bg-background flex items-center justify-center px-6 py-20">
+			<div className="container">
 				{/* Header */}
 				<div className="flex items-center justify-between mb-16">
 					<h1 className="text-5xl font-bold text-demo-text leading-tight flex-1">
-						Hear Iquiri.ai handle phone calls in real time.
+						Hear Iquiri.ai handle phone calls <br /> in real time.
 					</h1>
 
 					{/* Navigation Arrows */}
@@ -77,10 +77,10 @@ const PhoneCallDemo: React.FC = () => {
 				</div>
 
 				{/* Demo Cards */}
-				<div className="relative">
-					<div className="flex items-center justify-center space-x-6">
+				<div className="relative w-full">
+					<div className="w-full flex items-center justify-end space-x-6">
 						{/* Audio Cards Container */}
-						<div className="flex space-x-6 overflow-hidden">
+						<div className="w-full flex items-center justify-end space-x-6 overflow-hidden">
 							{getVisibleCards().map((demo, index) => (
 								<AudioCard
 									key={`${demo.companyName}-${currentIndex}-${index}`}

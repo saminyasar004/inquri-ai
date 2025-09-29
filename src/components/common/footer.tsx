@@ -5,7 +5,7 @@ const Footer = () => {
 	return (
 		<footer className="bg-black text-gray-300">
 			{/* Main footer content */}
-			<div className="max-w-7xl mx-auto px-4 py-12">
+			<div className="container px-4 py-12">
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 					{/* Home Section */}
 					<div className="space-y-4">
@@ -140,7 +140,7 @@ const Footer = () => {
 						</p>
 						<div className="flex space-x-6">
 							<a
-								href="/privacy-policy"
+								href="/privacy"
 								className="text-sm text-gray-500 hover:text-white transition-colors"
 							>
 								Privacy Policy

@@ -17,7 +17,9 @@ export default function Header() {
 						<li>How it works</li>
 						<li>Industry</li>
 						<li>Resources</li>
-						<li>Pricing</li>
+						<Link to={"pricing"}>
+							<li>Pricing</li>
+						</Link>
 					</ul>
 				</div>
 
