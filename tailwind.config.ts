@@ -48,6 +48,9 @@ export default {
 					},
 				},
 			},
+			dropShadow: {
+				"contact-box": "0px -2px 10px rgba(204, 181, 253, 0.3)",
+			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
