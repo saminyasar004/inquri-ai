@@ -23,18 +23,51 @@ import AI from "@/assets/images/ai.svg";
 import Booking from "@/assets/images/booking.svg";
 import Train from "@/assets/images/train.svg";
 import Users from "@/assets/images/users.svg";
-import LandingPageBannerPhone from "@/assets/images/landing-page-banner-phone.svg";
-import PhoneMockup from "@/assets/images/phone-mockup.svg";
+import LandingPagePhoneMockup from "@/assets/images/landing-page-phone-mockup.svg";
 import WavesBG from "@/assets/images/waves-bg.svg";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import PhoneCallDemo from "@/components/common/phone-call-demo";
 import MissedCallSection from "@/components/common/missed-call";
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from "@/components/ui/accordion";
+import { GradientInput } from "@/components/ui/gradient-input";
+
+const faqs = [
+	{
+		question: "What is field service management?",
+		answer: "Field service management (FSM) is the process of managing a company's field operations through a mobile workforce. It involves scheduling, dispatching, and tracking field technicians, managing work orders, and ensuring efficient service delivery.",
+	},
+	{
+		question: "What are the benefits of field service management?",
+		answer: "Benefits include improved efficiency, reduced operational costs, better customer satisfaction, real-time tracking, and optimized resource allocation.",
+	},
+	{
+		question: "How much does field service management cost?",
+		answer: "The cost varies depending on the software provider, features, and scale of use. It can range from $20 to $200 per user per month, with additional costs for customization or integrations.",
+	},
+	{
+		question: "What are the common features of field service management?",
+		answer: "Common features include work order management, scheduling, GPS tracking, inventory management, invoicing, and customer portals.",
+	},
+	{
+		question: "Factors to consider when buying field service management?",
+		answer: "Consider scalability, ease of use, integration capabilities, customer support, cost, and specific industry needs when choosing an FSM solution.",
+	},
+	{
+		question: "Who needs field service management?",
+		answer: "Industries such as HVAC, plumbing, electrical services, telecommunications, and IT support commonly need FSM to manage their field operations efficiently.",
+	},
+];
 
 const Index = () => {
 	return (
 		<>
-			<div className="min-h-screen bg-black text-dark-foreground-500">
+			<div className="min-h-screen max-h-[500px] relative text-dark-foreground-500">
 				<div className="container grid grid-cols-2 gap-8">
 					<div className="flex flex-col gap-4 pt-40">
 						<h1 className="font-arialRounded w-[70%] leading-snug text-5xl">
@@ -63,7 +96,7 @@ const Index = () => {
 							</Button>
 						</div>
 					</div>
-					<div className="flex relative items-center justify-center pt-40">
+					<div className=" flex relative items-center justify-center pt-40">
 						<img
 							src={HeroBanner}
 							alt="Inquri AI"
@@ -78,7 +111,7 @@ const Index = () => {
 					</div>
 				</div>
 
-				<div className="w-full flex items-center justify-center py-8">
+				<div className="w-full flex items-center justify-center py-8 absolute bottom-0 -z-10">
 					<img src={HeroWaves} alt="" className="w-full" />
 				</div>
 			</div>
@@ -91,7 +124,7 @@ const Index = () => {
 						</h3>
 					</div>
 
-					<div className="grid grid-cols-7 grid-rows-2 gap-8">
+					<div className="grid grid-cols-7 items-center justify-center py-12 gap-8">
 						<div className="w-full flex items-center justify-center">
 							<img
 								src={ServiceM8}
@@ -140,7 +173,7 @@ const Index = () => {
 							/>
 						</div>
 					</div>
-					<div className="w-full flex items-center justify-center gap-8">
+					<div className="w-full flex items-center justify-center gap-2">
 						<div className="w-full flex items-center justify-center">
 							<img
 								src={SquareAppointments}
@@ -443,7 +476,7 @@ const Index = () => {
 			<div className="w-full py-12 relative">
 				<img
 					src={WavesBG}
-					className="-z-10 absolute top-1/2 -translate-y-1/2 left-0 w-full"
+					className="-z-10 absolute top-3/4 -translate-y-1/2 left-0 w-full"
 					alt=""
 				/>
 				<div className="container">
@@ -490,15 +523,10 @@ const Index = () => {
 
 					<div className="w-full grid grid-cols-2 gap-4 py-16 items-center">
 						<div className="flex items-center justify-center">
-							{/* <img
-								src={PhoneMockup}
-								alt=""
-								className="max-w-full relative"
-							/> */}
 							<img
-								src={LandingPageBannerPhone}
+								src={LandingPagePhoneMockup}
 								alt=""
-								className="max-w-full border border-dark-foreground-500 rounded-xl"
+								className="max-w-full"
 							/>
 						</div>
 						<div className="rounded-lg p-6 px-8 border border-[#B0B0B0]/40 bg-black shadow-[-30px_5px_0px_rgba(13,13,13,0.41)] flex items-start justify-start w-[60%] flex-col gap-5 h-min">
@@ -510,7 +538,7 @@ const Index = () => {
 								<Label className="text-[#D7D9FB]">
 									Full Name
 								</Label>
-								<Input
+								<GradientInput
 									placeholder="Enter your full name"
 									className="text-white"
 								/>
@@ -520,7 +548,7 @@ const Index = () => {
 								<Label className="text-[#D7D9FB]">
 									Phone Number
 								</Label>
-								<Input
+								<GradientInput
 									placeholder="Enter your phone number"
 									className="text-white"
 								/>
@@ -528,14 +556,14 @@ const Index = () => {
 
 							<div className="w-full form-group flex flex-col gap-4 py-2">
 								<Label className="text-[#D7D9FB]">Email</Label>
-								<Input
+								<GradientInput
 									placeholder="Enter your email"
 									className="text-white"
 								/>
 							</div>
 
 							<Button
-								variant="another"
+								variant="primary"
 								size="lg"
 								className="rounded-lg w-full"
 							>
@@ -548,6 +576,45 @@ const Index = () => {
 
 			<PhoneCallDemo />
 			<MissedCallSection />
+
+			{/* faq */}
+
+			<div className="w-full py-12">
+				<div className="container grid grid-cols-2 gap-20">
+					<div className="flex items-center justify-center">
+						<Accordion type="single" collapsible className="w-full">
+							{faqs.map((faq, index) => (
+								<AccordionItem
+									key={index}
+									value={`item-${index}`}
+								>
+									<AccordionTrigger className="text-left">
+										{faq.question}
+									</AccordionTrigger>
+									<AccordionContent className="">
+										{faq.answer}
+									</AccordionContent>
+								</AccordionItem>
+							))}
+						</Accordion>
+					</div>
+
+					<div className="flex flex-col gap-4 pl-20">
+						<div className="w-full flex items-center">
+							<img src={Logo} alt="Inquiri AI" className="w-52" />
+						</div>
+						<h2 className="text-[#D7D9FB] text-4xl">
+							Frequently <br />
+							Asked Questions
+						</h2>
+						<p className="w-[60%] text-base text-[#696984]">
+							A missed call can easily become a missed
+							opportunity. Most prospects won’t wait or leave a
+							voicemail—they’ll just move on to someone else.
+						</p>
+					</div>
+				</div>
+			</div>
 		</>
 	);
 };
