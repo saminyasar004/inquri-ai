@@ -68,7 +68,7 @@ export default function Signup() {
 					</div>
 				</div>
 
-				<Button className="w-full h-12 bg-[#00FF00] hover:bg-[#00DD00] text-black font-semibold">
+				<Button className="w-full" variant="primary-flat" size="lg">
 					<Link to="/activate">Sign Up</Link>
 				</Button>
 

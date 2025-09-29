@@ -50,7 +50,7 @@ export default function Login() {
 					</div>
 				</div>
 
-				<Button className="w-full h-12 bg-[#00FF00] hover:bg-[#00DD00] text-black font-semibold">
+				<Button className="w-full" variant="primary-flat" size="lg">
 					<Link to={"/confirm"}>Login</Link>
 				</Button>
 
