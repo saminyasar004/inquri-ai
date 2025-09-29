@@ -14,6 +14,7 @@ import ConfirmEmail from "./pages/ConfirmEmail";
 import ChangePassword from "./pages/ChangePassword";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/Privacy";
+import Pricing from "./pages/Pricing";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,14 @@ const App = () => (
 						element={
 							<Layout>
 								<PrivacyPolicy />
+							</Layout>
+						}
+					/>
+					<Route
+						path="/pricing"
+						element={
+							<Layout>
+								<Pricing />
 							</Layout>
 						}
 					/>
