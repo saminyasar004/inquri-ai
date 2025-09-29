@@ -54,7 +54,16 @@
 		@apply bg-black text-dark-foreground-500 cursor-default font-openSans overflow-x-hidden;
 	}
 
-	/* .row {
-		@apply w-row-sm lg:w-row max-w-[120rem] m-auto;
-	} */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-arialRounded;
+	}
+
+	p {
+		@apply font-openSans;
+	}
 }
