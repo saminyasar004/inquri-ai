@@ -15,6 +15,8 @@ import ChangePassword from "./pages/ChangePassword";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/Privacy";
 import Pricing from "./pages/Pricing";
+import DashboardLayout from "./components/common/dashboard-layout";
+import Dashboard from "./pages/Dashboard";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +63,14 @@ const App = () => (
 							<Layout>
 								<Pricing />
 							</Layout>
+						}
+					/>
+					<Route
+						path="/dashboard"
+						element={
+							<DashboardLayout>
+								<Dashboard />
+							</DashboardLayout>
 						}
 					/>
 					<Route
