@@ -17,6 +17,7 @@ import PrivacyPolicy from "./pages/Privacy";
 import Pricing from "./pages/Pricing";
 import DashboardLayout from "./components/common/dashboard-layout";
 import Dashboard from "./pages/Dashboard";
+import Schedule from "./pages/Schedule";
 
 const queryClient = new QueryClient();
 
@@ -70,6 +71,14 @@ const App = () => (
 						element={
 							<DashboardLayout>
 								<Dashboard />
+							</DashboardLayout>
+						}
+					/>
+					<Route
+						path="/schedule"
+						element={
+							<DashboardLayout>
+								<Schedule />
 							</DashboardLayout>
 						}
 					/>
