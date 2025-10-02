@@ -2,7 +2,7 @@ import Logo from "@/assets/images/logo.svg";
 import { Button } from "@/components/ui/button";
 import { Play, Star } from "lucide-react";
 import HeroBanner from "@/assets/images/hero-banner.svg";
-import HeroWaves from "@/assets/images/hero-waves.svg";
+import HeroWaves from "@/assets/videos/hero-animation-waves.mp4";
 import ServiceM8 from "@/assets/images/service-m8.svg";
 import Simpro from "@/assets/images/simpro.svg";
 import Tradify from "@/assets/images/tradify.svg";
@@ -67,7 +67,7 @@ const faqs = [
 const Index = () => {
 	return (
 		<>
-			<div className="min-h-screen max-h-[500px] relative text-dark-foreground-500">
+			<div className="min-h-screen max-h-[500px] relative text-dark-foreground-500 mb-40">
 				<div className="container grid grid-cols-2 gap-8">
 					<div className="flex flex-col gap-4 pt-40">
 						<h1 className="font-arialRounded w-[70%] leading-snug text-5xl">
@@ -112,7 +112,17 @@ const Index = () => {
 				</div>
 
 				<div className="w-full flex items-center justify-center py-8 absolute bottom-0 -z-10">
-					<img src={HeroWaves} alt="" className="w-full" />
+					{/* <img src={HeroWaves} alt="" className="w-full" /> */}
+					{/* put a infinite video loop here */}
+					<video
+						className="w-full absolute -bottom-[450px] transform -rotate-180"
+						autoPlay
+						loop
+						muted
+						playsInline
+					>
+						<source src={HeroWaves} type="video/mp4" />
+					</video>
 				</div>
 			</div>
 

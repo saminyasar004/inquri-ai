@@ -7,7 +7,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { ChevronLeft, ChevronRight, Plus } from "lucide-react";
+import { Calendar as CalendarIcon, ChevronRight, Plus } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import {
 	Dialog,
@@ -21,6 +21,10 @@ import {
 } from "@/components/ui/dialog";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Textarea } from "@/components/ui/textarea";
 
 export interface Appointment {
 	id: number;
@@ -39,7 +43,7 @@ export default function Schedule() {
 	);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [currentDate, setCurrentDate] = useState(new Date(2025, 5, 16)); // June 16, 2025
-	const [showAddBooking, setShowAddBooking] = useState(false);
+	const [showAddAppointment, setShowAddAppointment] = useState(false);
 
 	// Sample appointments with actual dates
 	const appointments: Appointment[] = [
@@ -234,7 +238,7 @@ export default function Schedule() {
 					</h3>
 				</div>
 				<div className="flex items-center justify-center">
-					<Button onClick={() => setShowAddBooking(true)}>
+					<Button onClick={() => setShowAddAppointment(true)}>
 						Add appointment <Plus className="h-4 w-4" />
 					</Button>
 				</div>
@@ -354,10 +358,150 @@ export default function Schedule() {
 				</div>
 			</div>
 
-			{/* <BookingAddDialog
-				isOpen={showAddBooking}
-				onClose={() => setShowAddBooking(false)}
-			/> */}
+			<AppointmentAddDialog
+				isOpen={showAddAppointment}
+				onClose={() => setShowAddAppointment(false)}
+			/>
 		</section>
+	);
+}
+
+function AppointmentAddDialog({
+	isOpen,
+	onClose,
+}: {
+	isOpen: boolean;
+	onClose: () => void;
+}) {
+	return (
+		<Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+			<DialogContent className="sm:max-w-[650px]">
+				<DialogHeader>
+					<DialogTitle className="text-2xl text-[#D8E1EB] text-center font-semibold">
+						Add Appointment
+					</DialogTitle>
+				</DialogHeader>
+				<ScrollArea className="h-[450px] px-3">
+					<div className="grid gap-4 py-3 px-3">
+						<div className="flex flex-row gap-2 items-center justify-center">
+							<div className="w-full grid gap-3">
+								<Label
+									htmlFor="customerName"
+									className=" text-[#BEBDBD] text-sm"
+								>
+									Customer Name
+								</Label>
+								<Input
+									id="customerName"
+									type="text"
+									placeholder="Enter Staff Name"
+									variant="default"
+								/>
+							</div>
+							<div className="w-full grid gap-3">
+								<Label
+									htmlFor="date"
+									className=" text-[#BEBDBD] text-sm"
+								>
+									Date
+								</Label>
+								<div className="relative">
+									<Input
+										type="date"
+										placeholder="mm/dd/yy"
+										// value={formData.date}
+										// onChange={(e) =>
+										// 	handleInputChange(
+										// 		"date",
+										// 		e.target.value
+										// 	)
+										// }
+										className="w-full"
+									/>
+									<CalendarIcon className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+								</div>
+							</div>
+						</div>
+						<div className="flex flex-row gap-2 items-center justify-center">
+							<div className="w-full grid gap-3">
+								<Label
+									htmlFor="time"
+									className=" text-[#BEBDBD] text-sm"
+								>
+									Time
+								</Label>
+								<Input
+									id="time"
+									type="text"
+									placeholder="Enter Customer Name"
+									variant="default"
+								/>
+							</div>
+							<div className="w-full grid gap-3">
+								<Label
+									htmlFor="personalPhoneNumber"
+									className=" text-[#BEBDBD] text-sm"
+								>
+									Personal Phone Number
+								</Label>
+								<Input
+									id="personalPhoneNumber"
+									type="text"
+									placeholder="Enter Time"
+									variant="default"
+								/>
+							</div>
+						</div>
+
+						<div className="grid gap-3">
+							<Label
+								htmlFor="emailAddress"
+								className=" text-[#BEBDBD] text-sm"
+							>
+								Email Address
+							</Label>
+							<Input
+								id="emailAddress"
+								type="text"
+								placeholder="Enter Price"
+								variant="default"
+							/>
+						</div>
+						<div className="grid gap-3">
+							<Label
+								htmlFor="location"
+								className=" text-[#BEBDBD] text-sm"
+							>
+								Location
+							</Label>
+							<Input
+								id="location"
+								type="text"
+								placeholder="Enter Date"
+								variant="default"
+							/>
+						</div>
+						<div className="grid gap-3">
+							<Label
+								htmlFor="descriptionOfRequiredService"
+								className=" text-[#BEBDBD] text-sm"
+							>
+								Description of required service
+							</Label>
+							<Textarea
+								id="descriptionOfRequiredService"
+								rows={5}
+								placeholder="Enter Time Slot"
+							/>
+						</div>
+					</div>
+				</ScrollArea>
+				<DialogFooter className="px-3">
+					<Button type="submit" className="w-full" variant="primary">
+						Submit
+					</Button>
+				</DialogFooter>
+			</DialogContent>
+		</Dialog>
 	);
 }
