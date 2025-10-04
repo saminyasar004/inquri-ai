@@ -19,7 +19,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -373,6 +373,20 @@ function AppointmentAddDialog({
 	isOpen: boolean;
 	onClose: () => void;
 }) {
+	const inputDateRef = useRef<HTMLInputElement>(null);
+
+	const openDatePicker = () => {
+		if (inputDateRef.current) {
+			// Modern browsers support showPicker()
+			if ("showPicker" in HTMLInputElement.prototype) {
+				(inputDateRef.current as any).showPicker();
+			} else {
+				// Fallback: focus the input (triggers picker in most browsers)
+				inputDateRef.current.focus();
+			}
+		}
+	};
+
 	return (
 		<Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
 			<DialogContent className="sm:max-w-[650px]">
@@ -407,18 +421,15 @@ function AppointmentAddDialog({
 								</Label>
 								<div className="relative">
 									<Input
+										ref={inputDateRef}
 										type="date"
 										placeholder="mm/dd/yy"
-										// value={formData.date}
-										// onChange={(e) =>
-										// 	handleInputChange(
-										// 		"date",
-										// 		e.target.value
-										// 	)
-										// }
 										className="w-full"
 									/>
-									<CalendarIcon className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+									<CalendarIcon
+										onClick={openDatePicker}
+										className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"
+									/>
 								</div>
 							</div>
 						</div>
