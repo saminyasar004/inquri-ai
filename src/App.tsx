@@ -18,6 +18,7 @@ import Pricing from "./pages/Pricing";
 import DashboardLayout from "./components/common/dashboard-layout";
 import Dashboard from "./pages/Dashboard";
 import Schedule from "./pages/Schedule";
+import Onboarding from "./pages/Onboarding";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,14 @@ const App = () => (
 						element={
 							<Layout>
 								<Pricing />
+							</Layout>
+						}
+					/>
+					<Route
+						path="/onboarding"
+						element={
+							<Layout>
+								<Onboarding />
 							</Layout>
 						}
 					/>

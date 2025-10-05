@@ -4,6 +4,7 @@ import { User, Rocket, Crown } from "lucide-react";
 import PricingTrialIcon from "@/assets/images/pricing-trial-icon.svg";
 import PricingBasicIcon from "@/assets/images/pricing-basic-icon.svg";
 import PricingProIcon from "@/assets/images/pricing-pro-icon.svg";
+import { Link } from "react-router-dom";
 
 const Pricing = () => {
 	const plans = [
@@ -131,13 +132,15 @@ const Pricing = () => {
 										</div>
 									</div>
 
-									<Button
-										variant={plan.buttonVariant}
-										size="lg"
-										className={`w-full rounded-xl`}
-									>
-										{plan.buttonText}
-									</Button>
+									<Link to={"/onboarding"}>
+										<Button
+											variant={plan.buttonVariant}
+											size="lg"
+											className={`w-full rounded-xl`}
+										>
+											{plan.buttonText}
+										</Button>
+									</Link>
 								</Card>
 							</div>
 						</div>
