@@ -74,4 +74,12 @@
 		/* background-repeat: no-repeat; */
 		/* opacity: 0.5; */
 	}
+	input[type="time"]::-webkit-calendar-picker-indicator {
+		display: none;
+		/* Or customize it further, e.g.: */
+		/* background-image: url('/path/to/custom-icon.svg'); */
+		/* background-size: contain; */
+		/* background-repeat: no-repeat; */
+		/* opacity: 0.5; */
+	}
 }
