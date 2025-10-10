@@ -4,14 +4,14 @@ import AdminDashboardBanner from "@/assets/images/admin-dashboard-banner.svg";
 
 const MissedCallSection: React.FC = () => {
 	return (
-		<section className="min-h-screen bg-background flex items-center justify-center px-6 py-20">
+		<section className="min-h-[calc(100svh-80px)] md:min-h-screen bg-background flex items-center justify-center px-4 md:px-6 py-12 md:py-20">
 			<div className="container">
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 					{/* Left Content */}
 					<div className="space-y-8">
 						{/* Main Heading */}
 						<div className="space-y-4">
-							<h2 className="text-5xl font-bold leading-tight">
+							<h2 className="text-3xl md:text-5xl font-bold leading-tight">
 								<span className="text-primary-500">
 									Missed the Call?
 								</span>
@@ -78,7 +78,7 @@ const MissedCallSection: React.FC = () => {
 						<div className="w-full flex items-center justify-center">
 							<img
 								src={AdminDashboardBanner}
-								className="w-full border border-border rounded-xl"
+								className="w-full border-2 border-[#00C853] rounded-xl"
 							/>
 						</div>
 					</div>

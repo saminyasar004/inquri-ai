@@ -49,52 +49,52 @@ const PhoneCallDemo: React.FC = () => {
 		return visibleCards;
 	};
 
-	return (
-		<section className="h-auto bg-background flex items-center justify-center px-6 py-20">
-			<div className="container">
-				{/* Header */}
-				<div className="flex items-center justify-between mb-16">
-					<h1 className="text-5xl font-bold text-demo-text leading-tight flex-1">
-						Hear Iquiri.ai handle phone calls <br /> in real time.
-					</h1>
+    return (
+        <section className="h-auto bg-background flex items-center justify-center px-4 md:px-6 py-12 md:py-20">
+            <div className="container">
+                {/* Header */}
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-0 mb-10 md:mb-16">
+                    <h1 className="text-3xl md:text-5xl font-bold text-demo-text leading-tight flex-1">
+                        Hear <span className="text-primary-500">Inquri.ai</span> handle phone calls <br className="hidden md:block" /> in real time.
+                    </h1>
 
-					{/* Navigation Arrows */}
-					<div className="flex items-center space-x-4 ml-8">
-						<button
-							onClick={prevSlide}
-							className="w-12 h-12 rounded-full border-2 border-nav-button text-nav-button hover:bg-nav-button hover:text-background transition-all duration-200 flex items-center justify-center"
-						>
-							<ChevronLeft className="w-5 h-5" />
-						</button>
+                    {/* Navigation Arrows */}
+                    <div className="flex items-center space-x-4 md:ml-8">
+                        <button
+                            onClick={prevSlide}
+                            className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-[#00C853] text-[#00C853] bg-transparent hover:bg-[#00C853] hover:text-white transition-all duration-200 flex items-center justify-center"
+                        >
+                            <ChevronLeft className="w-5 h-5" />
+                        </button>
 
-						<button
-							onClick={nextSlide}
-							className="w-12 h-12 rounded-full border-2 border-nav-button text-nav-button hover:bg-nav-button hover:text-background transition-all duration-200 flex items-center justify-center"
-						>
-							<ChevronRight className="w-5 h-5" />
-						</button>
-					</div>
-				</div>
+                        <button
+                            onClick={nextSlide}
+                            className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-[#00C853] text-[#00C853] bg-transparent hover:bg-[#00C853] hover:text-white transition-all duration-200 flex items-center justify-center"
+                        >
+                            <ChevronRight className="w-5 h-5" />
+                        </button>
+                    </div>
+                </div>
 
-				{/* Demo Cards */}
-				<div className="relative w-full">
-					<div className="w-full flex items-center justify-end space-x-6">
-						{/* Audio Cards Container */}
-						<div className="w-full flex items-center justify-end space-x-6 overflow-hidden">
-							{getVisibleCards().map((demo, index) => (
-								<AudioCard
-									key={`${demo.companyName}-${currentIndex}-${index}`}
-									companyName={demo.companyName}
-									voiceType={demo.voiceType}
-									logoSrc={demo.logoSrc}
-								/>
-							))}
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	);
+                {/* Demo Cards */}
+                <div className="relative w-full">
+                    <div className="w-full flex items-center justify-center md:justify-end">
+                        {/* Audio Cards Container */}
+                        <div className="w-full flex flex-col md:flex-row md:flex-nowrap gap-4 md:gap-6 overflow-visible md:overflow-hidden snap-none md:snap-none pb-2">
+                            {getVisibleCards().map((demo, index) => (
+                                <AudioCard
+                                    key={`${demo.companyName}-${currentIndex}-${index}`}
+                                    companyName={demo.companyName}
+                                    voiceType={demo.voiceType}
+                                    logoSrc={demo.logoSrc}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
 };
 
 export default PhoneCallDemo;
