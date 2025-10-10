@@ -6,7 +6,7 @@ import PricingBasicIcon from "@/assets/images/pricing-basic-icon.svg";
 import PricingProIcon from "@/assets/images/pricing-pro-icon.svg";
 import { Link } from "react-router-dom";
 
-export const plans = [
+export const pricingPlans = [
 	{
 		name: "Trial",
 		icon: PricingTrialIcon,
@@ -65,7 +65,7 @@ const Pricing = () => {
 				</div>
 
 				<div className="grid md:grid-cols-3 gap-16 container items-center">
-					{plans.map((plan) => (
+					{pricingPlans.map((plan) => (
 						<div key={plan.name} className="relative h-auto mt-24">
 							<div
 								className={
