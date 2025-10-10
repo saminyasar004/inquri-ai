@@ -20,6 +20,7 @@ import Dashboard from "./pages/Dashboard";
 import Bookings from "./pages/Bookings";
 import Onboarding from "./pages/Onboarding";
 import Schedule from "./pages/Schedule";
+import CallDetails from "./pages/CallDetails";
 
 const queryClient = new QueryClient();
 
@@ -97,6 +98,14 @@ const App = () => (
 						element={
 							<DashboardLayout>
 								<Bookings />
+							</DashboardLayout>
+						}
+					/>
+					<Route
+						path="/call-details"
+						element={
+							<DashboardLayout>
+								<CallDetails />
 							</DashboardLayout>
 						}
 					/>
