@@ -821,8 +821,6 @@ function Questions() {
 }
 
 function Notification() {
-	const profilePictureInputRef = useRef<HTMLInputElement>(null);
-
 	return (
 		<div className="w-full flex flex-col gap-6 py-4">
 			<div className="w-full flex flex-col gap-2 border-b border-[#575757] py-3">
