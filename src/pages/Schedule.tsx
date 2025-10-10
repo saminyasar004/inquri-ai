@@ -18,6 +18,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import {
+	Calendar,
 	CalendarIcon,
 	Check,
 	Clock,
@@ -29,8 +30,26 @@ import {
 	X,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { useRef } from "react";
+import {
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectLabel,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
+import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import {
+	Dialog,
+	DialogContent,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+} from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { DialogDescription } from "@radix-ui/react-dialog";
 
 export default function Schedule() {
 	const scheduleData = [
@@ -150,6 +169,11 @@ export default function Schedule() {
 		},
 	];
 
+	const [showTimeSlotDialog, setShowTimeSlotDialog] = useState(false);
+	const [showUnavailableTimeSetupDialog, setShowUnavailableTimeSetupDialog] =
+		useState(false);
+	const [showAvailabilityDialog, setShowAvailabilityDialog] = useState(false);
+
 	return (
 		<section className="w-full pb-8">
 			<div className="flex justify-between gap-1 flex-1 px-6 py-4">
@@ -162,13 +186,17 @@ export default function Schedule() {
 			<div className="p-6">
 				<div className="w-full grid grid-cols-2 gap-8">
 					<div className="flex items-center justify-start">
-						<Button>
+						<Button
+							onClick={() =>
+								setShowUnavailableTimeSetupDialog(true)
+							}
+						>
 							Unavailable <Plus className="h-4 w-4" />
 						</Button>
 					</div>
 
 					<div className="flex items-center justify-between">
-						<Button>
+						<Button onClick={() => setShowTimeSlotDialog(true)}>
 							Time Slot <Plus className="h-4 w-4" />
 						</Button>
 
@@ -285,7 +313,11 @@ export default function Schedule() {
 								<h4 className="text-[#B2B2B2] font-normal text-base">
 									Availability
 								</h4>
-								<Button>
+								<Button
+									onClick={() =>
+										setShowAvailabilityDialog(true)
+									}
+								>
 									Add <Plus className="h-4 w-4" />
 								</Button>
 							</div>
@@ -390,6 +422,386 @@ export default function Schedule() {
 					</div>
 				</div>
 			</div>
+
+			<TimeSlotSetup
+				isOpen={showTimeSlotDialog}
+				onClose={() => setShowTimeSlotDialog(false)}
+			/>
+			<UnavailableTimeSetupDialog
+				isOpen={showUnavailableTimeSetupDialog}
+				onClose={() => setShowUnavailableTimeSetupDialog(false)}
+			/>
+			<AvailabilityDialog
+				isOpen={showAvailabilityDialog}
+				onClose={() => setShowAvailabilityDialog(false)}
+			/>
 		</section>
+	);
+}
+
+function AvailabilityDialog({
+	isOpen,
+	onClose,
+}: {
+	isOpen: boolean;
+	onClose: () => void;
+}) {
+	const fromTimeRef = useRef<HTMLInputElement>(null);
+	const toTimeRef = useRef<HTMLInputElement>(null);
+
+	const openFromTimePicker = () => {
+		if (fromTimeRef.current) {
+			// Modern browsers support showPicker()
+			if ("showPicker" in HTMLInputElement.prototype) {
+				(fromTimeRef.current as any).showPicker();
+			} else {
+				// Fallback: focus the input (triggers picker in most browsers)
+				fromTimeRef.current.focus();
+			}
+		}
+	};
+
+	const openToTimePicker = () => {
+		if (toTimeRef.current) {
+			// Modern browsers support showPicker()
+			if ("showPicker" in HTMLInputElement.prototype) {
+				(toTimeRef.current as any).showPicker();
+			} else {
+				// Fallback: focus the input (triggers picker in most browsers)
+				toTimeRef.current.focus();
+			}
+		}
+	};
+
+	return (
+		<Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+			<DialogContent className="sm:max-w-[650px]">
+				<DialogHeader>
+					<DialogTitle className="text-2xl text-[#D8E1EB] text-center font-semibold">
+						Unavailable Time Set Up
+					</DialogTitle>
+				</DialogHeader>
+				<ScrollArea className="px-3 py-8">
+					<div className="w-full grid gap-3">
+						<Label
+							htmlFor="dayName"
+							className=" text-[#BEBDBD] text-sm"
+						>
+							Name
+						</Label>
+
+						<Select>
+							<SelectTrigger className="w-full">
+								<SelectValue placeholder="Select a day" />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectGroup>
+									<SelectItem value="sat">
+										Saturday
+									</SelectItem>
+									<SelectItem value="sun">Sunday</SelectItem>
+									<SelectItem value="mon">Monday</SelectItem>
+									<SelectItem value="tue">Tuesday</SelectItem>
+									<SelectItem value="wed">
+										Wednesday
+									</SelectItem>
+									<SelectItem value="thu">
+										Thursday
+									</SelectItem>
+									<SelectItem value="fri">Friday</SelectItem>
+								</SelectGroup>
+							</SelectContent>
+						</Select>
+					</div>
+
+					<div className="w-full grid gap-3 pt-5">
+						<Label
+							htmlFor="date"
+							className=" text-[#BEBDBD] text-sm"
+						>
+							Unavailable From
+						</Label>
+						<div className="relative">
+							<Input
+								ref={fromTimeRef}
+								type="time"
+								placeholder="Select time"
+								className="w-full"
+							/>
+							<Clock
+								onClick={openFromTimePicker}
+								className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"
+							/>
+						</div>
+					</div>
+
+					<div className="w-full grid gap-3 pt-5">
+						<Label
+							htmlFor="date"
+							className=" text-[#BEBDBD] text-sm"
+						>
+							Unavailable To
+						</Label>
+						<div className="relative">
+							<Input
+								ref={toTimeRef}
+								type="time"
+								placeholder="Select time"
+								className="w-full"
+							/>
+							<Clock
+								onClick={openToTimePicker}
+								className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"
+							/>
+						</div>
+					</div>
+				</ScrollArea>
+				<DialogFooter className="px-3">
+					<Button type="submit" className="w-full" variant="primary">
+						Confirm
+					</Button>
+				</DialogFooter>
+			</DialogContent>
+		</Dialog>
+	);
+}
+
+function UnavailableTimeSetupDialog({
+	isOpen,
+	onClose,
+}: {
+	isOpen: boolean;
+	onClose: () => void;
+}) {
+	const fromDateRef = useRef<HTMLInputElement>(null);
+	const toDateRef = useRef<HTMLInputElement>(null);
+	const fromTimeRef = useRef<HTMLInputElement>(null);
+	const toTimeRef = useRef<HTMLInputElement>(null);
+
+	const openFromDatePicker = () => {
+		if (fromDateRef.current) {
+			// Modern browsers support showPicker()
+			if ("showPicker" in HTMLInputElement.prototype) {
+				(fromDateRef.current as any).showPicker();
+			} else {
+				// Fallback: focus the input (triggers picker in most browsers)
+				fromDateRef.current.focus();
+			}
+		}
+	};
+
+	const openFromTimePicker = () => {
+		if (fromTimeRef.current) {
+			// Modern browsers support showPicker()
+			if ("showPicker" in HTMLInputElement.prototype) {
+				(fromTimeRef.current as any).showPicker();
+			} else {
+				// Fallback: focus the input (triggers picker in most browsers)
+				fromTimeRef.current.focus();
+			}
+		}
+	};
+
+	const openToDatePicker = () => {
+		if (toDateRef.current) {
+			// Modern browsers support showPicker()
+			if ("showPicker" in HTMLInputElement.prototype) {
+				(toDateRef.current as any).showPicker();
+			} else {
+				// Fallback: focus the input (triggers picker in most browsers)
+				toDateRef.current.focus();
+			}
+		}
+	};
+
+	const openToTimePicker = () => {
+		if (toTimeRef.current) {
+			// Modern browsers support showPicker()
+			if ("showPicker" in HTMLInputElement.prototype) {
+				(toTimeRef.current as any).showPicker();
+			} else {
+				// Fallback: focus the input (triggers picker in most browsers)
+				toTimeRef.current.focus();
+			}
+		}
+	};
+
+	return (
+		<Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+			<DialogContent className="sm:max-w-[650px]">
+				<DialogHeader>
+					<DialogTitle className="text-2xl text-[#D8E1EB] text-center font-semibold">
+						Unavailable Time Set Up
+					</DialogTitle>
+				</DialogHeader>
+				<ScrollArea className="px-3 py-8">
+					<div className="w-full grid gap-3">
+						<Label
+							htmlFor="name"
+							className=" text-[#BEBDBD] text-sm"
+						>
+							Name
+						</Label>
+						<Input
+							id="name"
+							type="text"
+							placeholder="Enter here"
+							variant="default"
+						/>
+					</div>
+
+					<div className="w-full flex flex-col gap-3 pt-5">
+						<Label
+							htmlFor="timeSlot"
+							className=" text-[#BEBDBD] text-sm"
+						>
+							Unavailable From
+						</Label>
+
+						<div className="w-full flex flex-row items-center gap-4">
+							<div className="w-full flex flex-col gap-2">
+								<div className="relative w-full">
+									<Input
+										ref={fromDateRef}
+										type="date"
+										placeholder="Duration of each service time"
+										className="w-full h-10"
+									/>
+									<Calendar
+										onClick={openFromDatePicker}
+										className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"
+									/>
+								</div>
+							</div>
+
+							<div className="w-full flex flex-col gap-2">
+								<div className="relative w-full">
+									<Input
+										ref={fromTimeRef}
+										type="time"
+										placeholder="Duration of each service time"
+										className="w-full h-10"
+									/>
+									<Clock
+										onClick={openFromTimePicker}
+										className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div className="w-full flex flex-col gap-3 pt-5">
+						<Label
+							htmlFor="timeSlot"
+							className=" text-[#BEBDBD] text-sm"
+						>
+							Unavailable To
+						</Label>
+
+						<div className="w-full flex flex-row items-center gap-4">
+							<div className="w-full flex flex-col gap-2">
+								<div className="relative w-full">
+									<Input
+										ref={toDateRef}
+										type="date"
+										placeholder="Duration of each service time"
+										className="w-full h-10"
+									/>
+									<Calendar
+										onClick={openToDatePicker}
+										className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"
+									/>
+								</div>
+							</div>
+
+							<div className="w-full flex flex-col gap-2">
+								<div className="relative w-full">
+									<Input
+										ref={toTimeRef}
+										type="time"
+										placeholder="Duration of each service time"
+										className="w-full h-10"
+									/>
+									<Clock
+										onClick={openToTimePicker}
+										className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</ScrollArea>
+				<DialogFooter className="px-3">
+					<Button type="submit" className="w-full" variant="primary">
+						Confirm
+					</Button>
+				</DialogFooter>
+			</DialogContent>
+		</Dialog>
+	);
+}
+
+function TimeSlotSetup({
+	isOpen,
+	onClose,
+}: {
+	isOpen: boolean;
+	onClose: () => void;
+}) {
+	const timeSlotRef = useRef<HTMLInputElement>(null);
+
+	const openTimeSlotPicker = () => {
+		if (timeSlotRef.current) {
+			// Modern browsers support showPicker()
+			if ("showPicker" in HTMLInputElement.prototype) {
+				(timeSlotRef.current as any).showPicker();
+			} else {
+				// Fallback: focus the input (triggers picker in most browsers)
+				timeSlotRef.current.focus();
+			}
+		}
+	};
+
+	return (
+		<Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+			<DialogContent className="sm:max-w-[650px]">
+				<DialogHeader>
+					<DialogTitle className="text-2xl text-[#D8E1EB] text-center font-semibold">
+						Time Slot Set Up
+					</DialogTitle>
+					<DialogDescription className="text-[#818384] text-center text-sm">
+						Duration of an appointment booking
+					</DialogDescription>
+				</DialogHeader>
+				<ScrollArea className="px-3 py-8">
+					<div className="w-full flex flex-col gap-2">
+						<Label
+							htmlFor="timeSlot"
+							className=" text-[#BEBDBD] text-sm"
+						>
+							Time slot size
+						</Label>
+						<div className="relative w-full">
+							<Input
+								ref={timeSlotRef}
+								type="time"
+								placeholder="Duration of each service time"
+								className="w-full h-10"
+							/>
+							<Clock
+								onClick={openTimeSlotPicker}
+								className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"
+							/>
+						</div>
+					</div>
+				</ScrollArea>
+				<DialogFooter className="px-3">
+					<Button type="submit" className="w-full" variant="primary">
+						Confirm
+					</Button>
+				</DialogFooter>
+			</DialogContent>
+		</Dialog>
 	);
 }
