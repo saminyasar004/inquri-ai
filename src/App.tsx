@@ -86,7 +86,7 @@ const App = () => (
 						}
 					/>
 					<Route
-						path="/schedule"
+						path="/dashboard/schedule"
 						element={
 							<DashboardLayout>
 								<Schedule />
@@ -94,7 +94,7 @@ const App = () => (
 						}
 					/>
 					<Route
-						path="/bookings"
+						path="/dashboard/bookings"
 						element={
 							<DashboardLayout>
 								<Bookings />

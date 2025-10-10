@@ -30,25 +30,25 @@ export default function DashboardLayout({ children }) {
 
 		{
 			label: "Schedule",
-			href: "/schedule",
+			href: "/dashboard/schedule",
 			icon: <Clock size={20} className="shrink-0" />,
 		},
 
 		{
 			label: "Bookings",
-			href: "/bookings",
+			href: "/dashboard/bookings",
 			icon: <CalendarDays size={20} className="shrink-0" />,
 		},
 
 		{
 			label: "Train Agent",
-			href: "/train-agent",
+			href: "/dashboard/train-agent",
 			icon: <Sparkles size={20} className="shrink-0" />,
 		},
 
 		{
 			label: "Call Details",
-			href: "/call-details",
+			href: "/dashboard/call-details",
 			icon: <PhoneCall size={20} className="shrink-0" />,
 		},
 	];
