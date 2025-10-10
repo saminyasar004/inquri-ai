@@ -6,51 +6,51 @@ import PricingBasicIcon from "@/assets/images/pricing-basic-icon.svg";
 import PricingProIcon from "@/assets/images/pricing-pro-icon.svg";
 import { Link } from "react-router-dom";
 
-const Pricing = () => {
-	const plans = [
-		{
-			name: "Trial",
-			icon: PricingTrialIcon,
-			subtitle: "Temporary Number (50 Customers Calls)",
-			features: [
-				"Basic Dashboard / No Booking Calendar Integration (Only Inquri.ai's platform Calendar (FREE)",
-			],
-			price: "Trial",
-			buttonText: "Try now",
-			buttonVariant: "secondary" as const,
-			featured: false,
-		},
-		{
-			name: "Basic",
-			icon: PricingBasicIcon,
-			subtitle: "Personal Ai agent Number",
-			features: [
-				"Unlimited customer Calls",
-				"Dashboard with Calendar Integration",
-			],
-			price: "$100",
-			period: "/month",
-			buttonText: "Subscribe now",
-			buttonVariant: "primary" as const,
-			featured: true,
-			badgeText: "Standard",
-		},
-		{
-			name: "Pro",
-			icon: PricingProIcon,
-			subtitle: "Personal Ai agent Number",
-			features: [
-				"Unlimited Customers Calls",
-				"Dashboard with Calendar Integration",
-			],
-			price: "$300",
-			period: "/month",
-			buttonText: "Subscribe now",
-			buttonVariant: "secondary" as const,
-			featured: false,
-		},
-	];
+export const plans = [
+	{
+		name: "Trial",
+		icon: PricingTrialIcon,
+		subtitle: "Temporary Number (50 Customers Calls)",
+		features: [
+			"Basic Dashboard / No Booking Calendar Integration (Only Inquri.ai's platform Calendar (FREE)",
+		],
+		price: "Trial",
+		buttonText: "Try now",
+		buttonVariant: "secondary" as const,
+		featured: false,
+	},
+	{
+		name: "Basic",
+		icon: PricingBasicIcon,
+		subtitle: "Personal Ai agent Number",
+		features: [
+			"Unlimited customer Calls",
+			"Dashboard with Calendar Integration",
+		],
+		price: "$100",
+		period: "/month",
+		buttonText: "Subscribe now",
+		buttonVariant: "primary" as const,
+		featured: true,
+		badgeText: "Standard",
+	},
+	{
+		name: "Pro",
+		icon: PricingProIcon,
+		subtitle: "Personal Ai agent Number",
+		features: [
+			"Unlimited Customers Calls",
+			"Dashboard with Calendar Integration",
+		],
+		price: "$300",
+		period: "/month",
+		buttonText: "Subscribe now",
+		buttonVariant: "secondary" as const,
+		featured: false,
+	},
+];
 
+const Pricing = () => {
 	return (
 		<section className="py-20 mb-56 px-4 bg-background">
 			<div className="container">
