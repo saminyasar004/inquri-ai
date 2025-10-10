@@ -26,9 +26,11 @@ import {
 	MoreHorizontal,
 	Plus,
 	Trash2,
+	X,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useRef } from "react";
+import { cn } from "@/lib/utils";
 
 export default function Schedule() {
 	const scheduleData = [
@@ -69,19 +71,84 @@ export default function Schedule() {
 		},
 	];
 
-	const inputDateRef = useRef<HTMLInputElement>(null);
+	const fromTimeRef = useRef<HTMLInputElement>(null);
+	const toTimeRef = useRef<HTMLInputElement>(null);
 
-	const openTimePicker = () => {
-		if (inputDateRef.current) {
+	const openFromTimePicker = () => {
+		if (fromTimeRef.current) {
 			// Modern browsers support showPicker()
 			if ("showPicker" in HTMLInputElement.prototype) {
-				(inputDateRef.current as any).showPicker();
+				(fromTimeRef.current as any).showPicker();
 			} else {
 				// Fallback: focus the input (triggers picker in most browsers)
-				inputDateRef.current.focus();
+				fromTimeRef.current.focus();
 			}
 		}
 	};
+
+	const openToTimePicker = () => {
+		if (toTimeRef.current) {
+			// Modern browsers support showPicker()
+			if ("showPicker" in HTMLInputElement.prototype) {
+				(toTimeRef.current as any).showPicker();
+			} else {
+				// Fallback: focus the input (triggers picker in most browsers)
+				toTimeRef.current.focus();
+			}
+		}
+	};
+
+	const days = [
+		{
+			id: 1,
+			name: "Saturday",
+			isActive: true,
+			fromTime: "12:00 AM",
+			toTime: "12:00 AM",
+		},
+		{
+			id: 2,
+			name: "Sunday",
+			isActive: false,
+			fromTime: "12:00 AM",
+			toTime: "12:00 AM",
+		},
+		{
+			id: 3,
+			name: "Monday",
+			isActive: false,
+			fromTime: "12:00 AM",
+			toTime: "12:00 AM",
+		},
+		{
+			id: 4,
+			name: "Tuesday",
+			isActive: false,
+			fromTime: "12:00 AM",
+			toTime: "12:00 AM",
+		},
+		{
+			id: 5,
+			name: "Wednesday",
+			isActive: false,
+			fromTime: "12:00 AM",
+			toTime: "12:00 AM",
+		},
+		{
+			id: 6,
+			name: "Thursday",
+			isActive: false,
+			fromTime: "12:00 AM",
+			toTime: "12:00 AM",
+		},
+		{
+			id: 7,
+			name: "Friday",
+			isActive: false,
+			fromTime: "12:00 AM",
+			toTime: "12:00 AM",
+		},
+	];
 
 	return (
 		<section className="w-full pb-8">
@@ -214,57 +281,111 @@ export default function Schedule() {
 						</p>
 
 						<div className="w-full flex flex-col gap-3 py-4">
+							<div className="w-full flex items-center justify-between">
+								<h4 className="text-[#B2B2B2] font-normal text-base">
+									Availability
+								</h4>
+								<Button>
+									Add <Plus className="h-4 w-4" />
+								</Button>
+							</div>
+
 							<div className="w-full grid grid-cols-5 gap-4">
-								{/* toggler */}
-								<div className="flex items-center space-x-2 col-span-2">
-									<Switch id="airplane-mode" />
-									<Label
-										className="text-[#B2B2B2] font-normal text-base cursor-pointer"
-										htmlFor="airplane-mode"
-									>
-										Saturday
-									</Label>
+								<div className="col-span-2"></div>
+
+								<div className="flex">
+									<span className="text-[#808080] text-sm font-normal">
+										From
+									</span>
 								</div>
 
 								<div className="flex">
-									<div className="relative w-[120px]">
-										<Input
-											ref={inputDateRef}
-											type="time"
-											placeholder="mm/dd/yy"
-											className="w-full h-10"
-										/>
-										<Clock
-											onClick={openTimePicker}
-											className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"
-										/>
-									</div>
-								</div>
-
-								<div className="">
-									<div className="relative w-[120px]">
-										<Input
-											ref={inputDateRef}
-											type="time"
-											placeholder="mm/dd/yy"
-											className="w-full h-10"
-										/>
-										<Clock
-											onClick={openTimePicker}
-											className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"
-										/>
-									</div>
-								</div>
-
-								<div className="flex items-center justify-center gap-2">
-									<div className="w-4 h-4 bg-primary-500 rounded-full flex items-center justify-center">
-										<Check size={20} color="#252525" />
-									</div>
-									<span className="text-primary-500 text-sm font-normal">
-										Active
+									<span className="text-[#808080] text-sm font-normal">
+										To
 									</span>
 								</div>
 							</div>
+
+							{days.map((day, index) => (
+								<div
+									key={index}
+									className="w-full grid grid-cols-5 gap-4"
+								>
+									{/* toggler */}
+									<div className="flex items-center space-x-2 col-span-2">
+										<Switch
+											checked={day.isActive}
+											id={day.name}
+										/>
+										<Label
+											className="text-[#B2B2B2] font-normal text-base cursor-pointer"
+											htmlFor={day.name}
+										>
+											{day.name}
+										</Label>
+									</div>
+
+									<div className="flex">
+										<div className="relative w-[120px]">
+											<Input
+												ref={fromTimeRef}
+												type="time"
+												placeholder={day.fromTime}
+												className="w-full h-10"
+											/>
+											<Clock
+												onClick={openFromTimePicker}
+												className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"
+											/>
+										</div>
+									</div>
+
+									<div className="relative w-[120px]">
+										<Input
+											ref={toTimeRef}
+											type="time"
+											placeholder={day.toTime}
+											className="w-full h-10"
+										/>
+										<Clock
+											onClick={openFromTimePicker}
+											className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"
+										/>
+									</div>
+
+									<div className="flex items-center justify-center gap-2">
+										<div
+											className={cn(
+												"w-5 h-5 p-1 rounded-full flex items-center justify-center",
+												day.isActive
+													? "bg-primary-500"
+													: "bg-[#90A290]"
+											)}
+										>
+											{day.isActive ? (
+												<Check
+													size={20}
+													color="#252525"
+												/>
+											) : (
+												<X size={20} color="#252525" />
+											)}
+										</div>
+										<span
+											className={cn(
+												"text-sm font-normal",
+												day.isActive
+													? "text-primary-500"
+													: "text-[#90A290]"
+											)}
+										>
+											{day.isActive
+												? "Active"
+												: "Inactive"}
+										</span>
+									</div>
+								</div>
+							))}
 						</div>
 					</div>
 				</div>
