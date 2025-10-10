@@ -15,6 +15,7 @@ import CalHeatmap from "cal-heatmap";
 import "cal-heatmap/cal-heatmap.css";
 import { Bell, CalendarCheck } from "lucide-react";
 import { useEffect } from "react";
+import Heatmap from "./Heatmap";
 
 const callsData = [
 	{
@@ -326,7 +327,7 @@ export default function Dashboard() {
 
 			<div className="w-full py-6">
 				{/* <div id="cal-heatmap"></div> */}
-				{/* <DashboardHeatmap /> */}
+				<Heatmap />
 			</div>
 		</>
 	);
