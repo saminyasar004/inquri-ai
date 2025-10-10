@@ -22,6 +22,7 @@ import Onboarding from "./pages/Onboarding";
 import Schedule from "./pages/Schedule";
 import CallDetails from "./pages/CallDetails";
 import PricingDashboard from "./pages/PricingDashboard";
+import TrainAgent from "./pages/TrainAgent";
 
 const queryClient = new QueryClient();
 
@@ -115,6 +116,14 @@ const App = () => (
 						element={
 							<DashboardLayout>
 								<PricingDashboard />
+							</DashboardLayout>
+						}
+					/>
+					<Route
+						path="/dashboard/train-agent"
+						element={
+							<DashboardLayout>
+								<TrainAgent />
 							</DashboardLayout>
 						}
 					/>
