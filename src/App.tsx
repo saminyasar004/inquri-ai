@@ -21,6 +21,7 @@ import Bookings from "./pages/Bookings";
 import Onboarding from "./pages/Onboarding";
 import Schedule from "./pages/Schedule";
 import CallDetails from "./pages/CallDetails";
+import PricingDashboard from "./pages/PricingDashboard";
 
 const queryClient = new QueryClient();
 
@@ -106,6 +107,14 @@ const App = () => (
 						element={
 							<DashboardLayout>
 								<CallDetails />
+							</DashboardLayout>
+						}
+					/>
+					<Route
+						path="/dashboard/pricing"
+						element={
+							<DashboardLayout>
+								<PricingDashboard />
 							</DashboardLayout>
 						}
 					/>

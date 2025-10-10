@@ -1,21 +1,17 @@
+import LogoImg from "@/assets/images/logo.svg";
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar";
-import { cn } from "@/lib/utils";
 import {
 	Blocks,
-	BriefcaseBusiness,
 	CalendarDays,
-	ChartSpline,
-	ChevronsLeftRight,
 	Clock,
 	Gem,
-	HandCoins,
 	Headset,
 	PhoneCall,
 	Sparkles,
+	Wallet,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import LogoImg from "@/assets/images/logo.svg";
 import DashboardHeader from "./dashboard-header";
 
 export default function DashboardLayout({ children }) {
@@ -50,6 +46,11 @@ export default function DashboardLayout({ children }) {
 			label: "Call Details",
 			href: "/dashboard/call-details",
 			icon: <PhoneCall size={20} className="shrink-0" />,
+		},
+		{
+			label: "Pricing",
+			href: "/dashboard/pricing",
+			icon: <Wallet size={20} className="shrink-0" />,
 		},
 	];
 	const [open, setOpen] = useState(true);
