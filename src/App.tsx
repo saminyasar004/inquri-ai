@@ -23,6 +23,7 @@ import Schedule from "./pages/Schedule";
 import CallDetails from "./pages/CallDetails";
 import PricingDashboard from "./pages/PricingDashboard";
 import TrainAgent from "./pages/TrainAgent";
+import Notification from "./pages/Notification";
 
 const queryClient = new QueryClient();
 
@@ -124,6 +125,14 @@ const App = () => (
 						element={
 							<DashboardLayout>
 								<TrainAgent />
+							</DashboardLayout>
+						}
+					/>
+					<Route
+						path="/dashboard/notifications"
+						element={
+							<DashboardLayout>
+								<Notification />
 							</DashboardLayout>
 						}
 					/>

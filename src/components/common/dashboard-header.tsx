@@ -31,6 +31,7 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import {
+	Bell,
 	ChevronDown,
 	Clock,
 	LockKeyhole,
@@ -41,6 +42,7 @@ import {
 } from "lucide-react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
+import { Link } from "react-router-dom";
 
 export default function DashboardHeader() {
 	return (
@@ -81,6 +83,20 @@ export default function DashboardHeader() {
 					</DropdownMenuTrigger>
 					<DropdownMenuContent className="w-60 mt-5" align="end">
 						<DropdownMenuGroup>
+							<DropdownMenuItem>
+								<Link to={"/dashboard/notifications"}>
+									<div className="flex items-center gap-3 hover:*:text-primary-500 group *:transition-all *:duration-100">
+										<Bell
+											className="text-[#D8E1EB] group-hover:text-primary-500"
+											size={18}
+										/>
+										<span className="text-[#8F9397]">
+											Notifications
+										</span>
+									</div>
+								</Link>
+							</DropdownMenuItem>
+
 							<DropdownMenuItem
 								onSelect={(e) => e.preventDefault()}
 							>
