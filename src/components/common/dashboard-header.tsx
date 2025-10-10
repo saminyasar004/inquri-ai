@@ -1,4 +1,5 @@
 import Avatar from "@/assets/images/avatar.jpg";
+import Logo from "@/assets/images/logo.svg";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -45,25 +46,15 @@ import { Input } from "../ui/input";
 import { Link } from "react-router-dom";
 
 export default function DashboardHeader() {
-	return (
-		<div className="w-full flex items-center justify-between py-6">
-			<div className="flex flex-col gap-3">
-				<span className="text-sm font-openSans font-medium text-[#CFD3D6]">
-					25 july, 2025
-				</span>
-				<h3 className="text-base font-semibold text-[#D8E1EB]">
-					Welcome, User.
-				</h3>
-			</div>
-			<div className="flex items-center justify-around gap-3">
-				<div className="flex flex-col gap-1">
-					<h4 className="text-[#D8E1EB] text-sm font-arialRounded">
-						Tea and Table Services ltd.
-					</h4>
-					<h4 className="text-[#CFD3D6] text-sm font-openSans">
-						sajibahhamed@gmail.com
-					</h4>
-				</div>
+    return (
+        <div className="w-full flex items-center justify-between py-6">
+            <div className="flex flex-col gap-3">
+                <img src={Logo} alt="Inquri AI" className="w-24 md:w-28" />
+                <h3 className="text-base font-semibold text-[#D8E1EB]">
+                    Welcome, User.
+                </h3>
+            </div>
+            <div className="flex items-center justify-end gap-3">
 				<div className="w-14 h-14 rounded-full flex items-center justify-center overflow-hidden">
 					<img
 						src={Avatar}
@@ -72,7 +63,7 @@ export default function DashboardHeader() {
 					/>
 				</div>
 
-				<DropdownMenu>
+                <DropdownMenu>
 					<DropdownMenuTrigger asChild>
 						<button className="w-min border-0 p-0 outline-none">
 							<ChevronDown

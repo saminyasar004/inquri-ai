@@ -53,7 +53,7 @@ export default function DashboardLayout({ children }) {
 			icon: <Wallet size={20} className="shrink-0" />,
 		},
 	];
-	const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(true);
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -61,8 +61,8 @@ export default function DashboardLayout({ children }) {
 
 	return (
 		<div className="w-full h-screen flex flex-1 rounded-md relative">
-			<Sidebar open={open} setOpen={setOpen}>
-				<SidebarBody className="justify-between gap-10 border border-r border-[#272525] bg-black text-dark-foreground-500 relative">
+            <Sidebar open={open} setOpen={setOpen}>
+                <SidebarBody hideMobileTopBar className="justify-between gap-10 border border-r border-[#272525] bg-black text-dark-foreground-500 relative">
 					<div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
 						{/* {open ? <Logo /> : <LogoIcon />} */}
 						<Logo />
@@ -113,7 +113,7 @@ export default function DashboardLayout({ children }) {
 					<ChevronsLeftRight />
 				</span> */}
 			</Sidebar>
-			<div className="w-full min-h-full overflow-y-scroll px-8">
+			<div className="w-full min-h-full overflow-y-auto overflow-x-hidden box-border px-4 md:px-8">
 				<DashboardHeader />
 				{children}
 			</div>

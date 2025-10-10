@@ -70,13 +70,16 @@ export const Sidebar = ({
 	);
 };
 
-export const SidebarBody = (props: React.ComponentProps<typeof motion.div>) => {
-	return (
-		<>
-			<DesktopSidebar {...props} />
-			<MobileSidebar {...(props as any)} />
-		</>
-	);
+export const SidebarBody = (
+    props: React.ComponentProps<typeof motion.div> & { hideMobileTopBar?: boolean }
+) => {
+    const { hideMobileTopBar, ...rest } = props as any;
+    return (
+        <>
+            <DesktopSidebar {...(rest as any)} />
+            <MobileSidebar hideTopBar={hideMobileTopBar} {...(rest as any)} />
+        </>
+    );
 };
 
 export const DesktopSidebar = ({
@@ -106,27 +109,29 @@ export const DesktopSidebar = ({
 };
 
 export const MobileSidebar = ({
-	className,
-	children,
-	...props
-}: React.ComponentProps<"div">) => {
-	const { open, setOpen } = useSidebar();
-	return (
-		<>
-			<div
-				className={cn(
-					"h-10 px-4 py-4 flex flex-row md:hidden  items-center justify-between bg-secondary w-full"
-				)}
-				{...props}
-			>
-				<div className="flex justify-end z-20 w-full">
-					<Menu
-						className="text-primary cursor-pointer"
-						onClick={() => setOpen(!open)}
-					/>
-				</div>
-				<AnimatePresence>
-					{open && (
+    className,
+    children,
+    hideTopBar,
+    ...props
+}: React.ComponentProps<"div"> & { hideTopBar?: boolean }) => {
+    const { open, setOpen } = useSidebar();
+    if (hideTopBar) return null;
+    return (
+        <>
+            <div
+                className={cn(
+                    "h-10 px-4 py-4 flex flex-row md:hidden  items-center justify-between bg-secondary w-full"
+                )}
+                {...props}
+            >
+                <div className="flex justify-end z-20 w-full">
+                    <Menu
+                        className="text-primary cursor-pointer"
+                        onClick={() => setOpen(!open)}
+                    />
+                </div>
+                <AnimatePresence>
+                    {open && (
 						<motion.div
 							initial={{ x: "-100%", opacity: 0 }}
 							animate={{ x: 0, opacity: 1 }}

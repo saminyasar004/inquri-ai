@@ -183,9 +183,9 @@ export default function Schedule() {
 					</h3>
 				</div>
 			</div>
-			<div className="py-6">
-				<div className="w-full grid grid-cols-2 gap-8">
-					<div className="flex items-center justify-start">
+				<div className="py-6">
+					<div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+						<div className="flex items-center justify-start">
 						<Button
 							onClick={() =>
 								setShowUnavailableTimeSetupDialog(true)
@@ -195,26 +195,26 @@ export default function Schedule() {
 						</Button>
 					</div>
 
-					<div className="flex items-center justify-between">
-						<Button onClick={() => setShowTimeSlotDialog(true)}>
-							Time Slot <Plus className="h-4 w-4" />
-						</Button>
-
-						<div className="flex items-center justify-center gap-4">
-							<span className="font-normal text-sm text-[#E6E6E6]">
-								Default Booking
-							</span>
-
-							<Button size="sm">
-								Copy <Copy className="h-4 w-4" />
+						<div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+							<Button onClick={() => setShowTimeSlotDialog(true)} className="w-full sm:w-auto">
+								Time Slot <Plus className="h-4 w-4" />
 							</Button>
+
+							<div className="flex items-center justify-between sm:justify-center gap-3 sm:gap-4">
+								<span className="font-normal text-sm text-[#E6E6E6]">
+									Default Booking
+								</span>
+
+								<Button size="sm" className="shrink-0">
+									Copy <Copy className="h-4 w-4" />
+								</Button>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div className="w-full grid grid-cols-2 gap-8 py-5">
-					<div className="rounded-lg bg-black border border-[#343232]">
-						<Table>
+					<div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 py-5">
+						<div className="rounded-lg bg-black border border-[#343232] overflow-x-auto">
+							<Table className="min-w-[640px]">
 							<TableHeader>
 								<TableRow className="bg-gradient-to-b from-[#0D0D0D] to-[#1A1A1A] rounded-xl hover:bg-black border-none">
 									<TableHead className="text-[#E6E6E6] font-arialRounded">
@@ -284,7 +284,7 @@ export default function Schedule() {
 						</Table>
 					</div>
 
-					<div className="w-full flex flex-col gap-2">
+						<div className="w-full flex flex-col gap-2">
 						<div className="w-full flex items-center justify-between p-5 rounded-xl bg-gradient-to-b from-[#0D0D0D] to-[#1A1A1A]">
 							<h4 className="text-[#E6E6E6]">
 								Regular working time
@@ -322,27 +322,16 @@ export default function Schedule() {
 								</Button>
 							</div>
 
-							<div className="w-full grid grid-cols-5 gap-4">
-								<div className="col-span-2"></div>
-
-								<div className="flex">
-									<span className="text-[#808080] text-sm font-normal">
-										From
-									</span>
-								</div>
-
-								<div className="flex">
-									<span className="text-[#808080] text-sm font-normal">
-										To
-									</span>
-								</div>
+							{/* Column headers for larger screens */}
+							<div className="hidden sm:grid w-full grid-cols-5 gap-4">
+								<div className="col-span-2" />
+								<div className="flex"><span className="text-[#808080] text-sm font-normal">From</span></div>
+								<div className="flex"><span className="text-[#808080] text-sm font-normal">To</span></div>
+								<div className="flex" />
 							</div>
 
 							{days.map((day, index) => (
-								<div
-									key={index}
-									className="w-full grid grid-cols-5 gap-4"
-								>
+								<div key={index} className="w-full grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4">
 									{/* toggler */}
 									<div className="flex items-center space-x-2 col-span-2">
 										<Switch
@@ -358,7 +347,7 @@ export default function Schedule() {
 									</div>
 
 									<div className="flex">
-										<div className="relative w-[120px]">
+										<div className="relative w-full sm:w-[120px]">
 											<Input
 												ref={fromTimeRef}
 												type="time"
@@ -372,7 +361,7 @@ export default function Schedule() {
 										</div>
 									</div>
 
-									<div className="relative w-[120px]">
+									<div className="relative w-full sm:w-[120px]">
 										<Input
 											ref={toTimeRef}
 											type="time"
