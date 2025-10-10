@@ -102,7 +102,7 @@ const App = () => (
 						}
 					/>
 					<Route
-						path="/call-details"
+						path="/dashboard/call-details"
 						element={
 							<DashboardLayout>
 								<CallDetails />
