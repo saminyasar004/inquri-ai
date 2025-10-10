@@ -18,7 +18,7 @@ const buttonVariants = cva(
 				secondary:
 					"bg-gradient-to-b from-[#615E84] to-[#2A2944] text-[#D8E1EB]",
 				ghost: "hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50",
-				link: "text-slate-900 underline-offset-4 hover:underline dark:text-slate-50",
+				link: "text-primary-500 underline-offset-4 underline dark:text-slate-50 text-sm font-normal p-0",
 				"primary-capsul":
 					"bg-[linear-gradient(to_bottom,#01D708_0%,#161616_100%)] rounded-full shadow-[0px_0px_21.14px_rgba(34,159,34,0.62)] border border-[#40DF40]",
 				"secondary-capsul":
