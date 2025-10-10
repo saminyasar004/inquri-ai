@@ -176,14 +176,14 @@ export default function Schedule() {
 
 	return (
 		<section className="w-full pb-8">
-			<div className="flex justify-between gap-1 flex-1 px-6 py-4">
+			<div className="flex justify-between gap-1 flex-1 py-4">
 				<div className="flex items-start w-full flex-col gap-1">
 					<h3 className="text-xl text-primary font-semibold">
 						Schedule Management
 					</h3>
 				</div>
 			</div>
-			<div className="p-6">
+			<div className="py-6">
 				<div className="w-full grid grid-cols-2 gap-8">
 					<div className="flex items-center justify-start">
 						<Button
