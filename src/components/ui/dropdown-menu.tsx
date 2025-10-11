@@ -62,10 +62,14 @@ const DropdownMenuContent = React.forwardRef<
 		<DropdownMenuPrimitive.Content
 			ref={ref}
 			sideOffset={sideOffset}
-			className={cn(
-				"z-50 max-h-[var(--radix-dropdown-menu-content-available-height)] min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-lg border bg-black p-1 text-dark-foreground-500 shadow-2xl border-[#272525] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[--radix-dropdown-menu-content-transform-origin] dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
-				className
-			)}
+    className={cn(
+                "z-50 relative max-h-[var(--radix-dropdown-menu-content-available-height)] min-w-[8rem] overflow-visible rounded-lg border bg-black p-1 text-dark-foreground-500 shadow-2xl border-[#272525] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[--radix-dropdown-menu-content-transform-origin] dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
+                // Arrow pointer (triangular) for bottom-aligned menus
+                "before:hidden data-[side=bottom]:before:block before:content-[''] before:absolute before:-top-3 before:left-10 before:border-l-[12px] before:border-l-transparent before:border-r-[12px] before:border-r-transparent before:border-b-[12px] before:border-b-[#272525]",
+                // Inner fill triangle to match background, slightly smaller
+                "after:hidden data-[side=bottom]:after:block after:content-[''] after:absolute after:-top-[10px] after:left-[44px] after:border-l-[10px] after:border-l-transparent after:border-r-[10px] after:border-r-transparent after:border-b-[10px] after:border-b-black",
+                className
+            )}
 			{...props}
 		/>
 	</DropdownMenuPrimitive.Portal>

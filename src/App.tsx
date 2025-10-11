@@ -2,7 +2,7 @@
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Index from "./pages";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/common/layout";
@@ -24,6 +24,8 @@ import CallDetails from "./pages/CallDetails";
 import PricingDashboard from "./pages/PricingDashboard";
 import TrainAgent from "./pages/TrainAgent";
 import Notification from "./pages/Notification";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 
 const queryClient = new QueryClient();
 
@@ -72,6 +74,18 @@ const App = () => (
 							</Layout>
 						}
 					/>
+					{/* Blog routes (index + detail) */}
+					<Route
+						path="/blog"
+						element={
+							<Layout>
+								<Outlet />
+							</Layout>
+						}
+					>
+						<Route index element={<Blog />} />
+						<Route path=":slug" element={<BlogPost />} />
+					</Route>
 					<Route
 						path="/onboarding"
 						element={

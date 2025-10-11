@@ -20,18 +20,17 @@ const AudioCard: React.FC<AudioCardProps> = ({
 		setIsPlaying(!isPlaying);
 	};
 
-	return (
-		<div className="bg-card border border-border rounded-2xl p-6 w-96 flex-shrink-0">
-			<div className="flex items-center space-x-4">
-				{/* Logo */}`{" "}
-				<div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
-					`{" "}
-					<img
-						src={logoSrc}
-						alt={`${companyName} logo`}
-						className="w-full h-full object-cover"
-					/>
-				</div>
+		return (
+			<div className="bg-card rounded-2xl p-6 w-full sm:w-80 md:w-96 flex-shrink-0 snap-center">
+				<div className="flex items-center space-x-4">
+					{/* Logo */}
+					<div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+						<img
+							src={logoSrc}
+							alt={`${companyName} logo`}
+							className="w-full h-full object-cover object-center block"
+						/>
+					</div>
 				{/* Company Info */}
 				<div className="flex-1 min-w-0">
 					<h3 className="text-card-foreground font-medium truncate">
